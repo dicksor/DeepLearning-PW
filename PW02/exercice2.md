@@ -74,25 +74,44 @@ plt.show()
 
 ### f) Show that the function is non-convex
 
-**A revoir**
-
 $$c_1(x) = (\sigma(x) - 1)^2$$
 
 First derivative
 
 $$c_1'(x) = \frac{\partial}{\partial\sigma}(\sigma(x) - 1)^2 \frac{\partial\sigma}{\partial x} = 2 (\sigma(x) - 1) \sigma'(x)$$
 
-$$2 (\sigma(x) - 1) \sigma(x) (1 - \sigma(x)) = -2 \sigma(x) (\sigma^2(x) + 1)$$
+$$2 (\sigma(x) - 1) \sigma(x) (1 - \sigma(x)) = -2 \sigma(x)c_1(x)$$
+
+The first derivative could be equal to 0 when:
+
+* sigma(x) = 0 -> never the case as sigma(x) in ]0; 1[
+* sigma(x) - 1 = 0 -> sigma(x) = 1 -> never the case as sigma(x) in ]0; 1[
+
+So it is never equal to 0.
 
 Second derivative
 
-$$c_1''(x) = -2 \sigma(x) (\sigma^2(x) + 1) = (-6 \sigma^2(x) - 2)(\sigma(x) - \sigma^2(x))$$
+$$c_1''(x) = -2 \left(\frac{\partial c_1}{\partial x}\sigma(x) + \frac{\partial \sigma}{\partial x} c_1(x) \right)$$
 
-$$= 6\sigma^4(x) -6\sigma^3(x) + 2\sigma^2(x) - 2\sigma$$
+$$=-2 \left(-2 \sigma^2(x) c_1(x) + \sigma(x)(1 - \sigma(x)) c_1(x) \right)$$
+
+$$=-2 c_1(x) \left( \sigma(x) - 3\sigma^2(x) \right)$$
+
+$$=-2 (\sigma(x) - 1)^2 \sigma(x) (1 -3\sigma(x))$$
+
+The second derivative could be equal 0 when :
+
+* sigma(x) = 0 -> never the case as sigma(x) in ]0; 1[
+* sigma(x) - 1 = 0 -> sigma(x) = 1 -> never the case as sigma(x) in ]0; 1[
+* 1 - 3sigma(x) = 0 -> sigma(x) = 1/3
+
+$$\frac{1}{1+e^{-x}} = \frac{1}{3}$$
+
+So when x = -log(2). Consequently on the left of x = -log(2) it is either > 0 or < 0 and the opposite on the right of x = -log(2). The function is non-convex.
 
 ![(sigmoid(z) - 1)^2](2f.png)
 
-The function is non-convex. Regardless of two points A and B of the function graph, the segement [ A B ] is sometimes not entirely located above the graph.
+Visually, if we were to draw a line between z = 5 and z = -5. The line would pass through the function. Affirming our previous conclusion.
 
 Optimising with gradient descent may become difficult when the function is non-convex as we can fall in minimum local or we can face to a saddle point.
 
@@ -239,7 +258,7 @@ Reasonable number of epochs for the following learning rates:
 * 5.0 : 150 epochs
 * 10.0 : 100 epochs
 
-### F) Plot a histogram of the weights finally obtained from learning. A strong peak at zero remains. Why ?
+### F) Plot a histogram of the weights finally obtained from learing. A strong peak at zero remains. Why ?
 
 ![Weights distribution](weight_dist.png)
 
