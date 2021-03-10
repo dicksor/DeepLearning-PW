@@ -272,3 +272,8 @@ When looking at this image we can see which pixels would activate the perceptron
 
 Some of these numbers are even difficult to classify by a human. Some of the 1 looks like 7 and vice versa.
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+
